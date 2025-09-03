@@ -12,7 +12,7 @@ class Program
 
         do
         {
-            Console.WriteLine("\nAMIGO OCULTO");
+            Console.WriteLine("AMIGO OCULTO");
             Console.WriteLine("Escolha uma opção:\n" +
                               "0 - Sair\n" +
                               "1 - Adicionar Nomes\n" +
@@ -33,20 +33,20 @@ class Program
                         novoNome = Console.ReadLine();
                         if (novoNome.ToLower() != "sair")
                         {
-                            if (!nomes.Contains(novoNome))
+                            if (!nomes.Contains(novoNome) && !string.IsNullOrWhiteSpace(novoNome))
                             {
                                 nomes.Add(novoNome);
                             }
                             else
                             {
-                                Console.WriteLine("Nome já cadastrado, tente outro.");
+                                Console.WriteLine("Nome já cadastrado ou inválido, tente outro.");
                             }
                         }
                     } while (novoNome.ToLower() != "sair");
                     break;
 
                 case 2:
-                    Console.WriteLine("\nOs nomes já cadastrados são: " + string.Join(", ", nomes));
+                    Console.WriteLine("Os nomes já cadastrados são: " + string.Join(", ", nomes));
                     break;
 
                 case 3:
@@ -58,7 +58,7 @@ class Program
                     {
                         pares = SortearAmigoOculto(nomes);
 
-                        Console.WriteLine("\n=== PARES SORTEADOS ===");
+                        Console.WriteLine("=== PARES SORTEADOS ===");
                         foreach (var par in pares)
                         {
                             Console.WriteLine($"{par.Key} → {par.Value}");
