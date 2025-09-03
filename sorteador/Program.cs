@@ -50,9 +50,9 @@ class Program
                     break;
 
                 case 3:
-                    if (nomes.Count < 2)
+                    if (nomes.Count < 3)
                     {
-                        Console.WriteLine("É necessário pelo menos 2 nomes para sortear!");
+                        Console.WriteLine("É necessário pelo menos 3 nomes para sortear!");
                     }
                     else
                     {
@@ -63,9 +63,10 @@ class Program
                         {
                             Console.WriteLine($"{par.Key} → {par.Value}");
                         }
+                        Console.WriteLine("Obrigado Por Participar!");
+                        return;
                     }
-                    Console.WriteLine("Obrigado Por Participar!");
-                    return;
+                    break;
 
                 default:
                     Console.WriteLine("Opção inválida!");
