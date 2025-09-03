@@ -1,14 +1,18 @@
+using System;
+
 List<string> nomes = new List<string>() {};
+Dictionary<string, string> pares = new Dictionary<string, string>();
 int opcao;
+bool sorteado = true;
 string novoNome;
 
 do { 
     Console.WriteLine("\nAMIGO OCULTO"); 
     Console.WriteLine("Escolha uma opção:\n" +
                       "0 - Sair\n" +
-                      "1 - Sortear\n" +
-                      "2 - Adicionar Nomes\n" +
-                      "3 - Lista de Nomes\n");
+                      "1 - Adicionar Nomes\n" +
+                      "2 - Lista de Nomes\n" +
+                      "3 - Sortear\n");
     opcao = Convert.ToInt32(Console.ReadLine());
 
     switch (opcao)
@@ -17,25 +21,43 @@ do {
             Console.WriteLine("Finalizado!");
             break;
 
-        case 1:
+        case 1:         
+            do
+            {
+                Console.WriteLine("Digite os nomes (digite 'sair' para parar):");
+                novoNome = Console.ReadLine();
+                    if (novoNome.ToLower() != "sair")
+                    {
+                        if (!nomes.Contains(novoNome))
+                        {
+                            nomes.Add(novoNome);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nome já cadastrado, tente outro.");
+                        }
+                    }
+            }while (novoNome.ToLower() != "sair");            
             break;
 
         case 2:
-            do
-            {
-                Console.WriteLine("Digite um nome (ou 'sair' para parar):");
-                novoNome = Console.ReadLine();
-
-                if (novoNome.ToLower() != "sair")
-                {
-                    nomes.Add(novoNome);
-                }
-
-            } while (novoNome.ToLower() != "sair");
+            Console.WriteLine("\nOs nomes já cadastrados são: " + string.Join(", ", nomes));        
             break;
 
         case 3:
-            Console.WriteLine("\nOs nomes já cadastrados são: " + string.Join(", ", nomes));        
+            if (nomes.Count < 2)
+            {
+                Console.WriteLine("É necessário pelo menos 2 nomes para sortear!");
+            }
+            else if (!sorteado)
+            {
+                sorteado = true;
+                Console.WriteLine("\n=== PARES DO SORTEIO ===");
+                foreach (var par in pares)
+                {
+                    Console.WriteLine($"{par.Key} → {par.Value}");
+                }
+            }
             break;
 
         default:
