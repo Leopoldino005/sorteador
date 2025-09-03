@@ -1,9 +1,6 @@
-using System;
-
 List<string> nomes = new List<string>() {};
 Dictionary<string, string> pares = new Dictionary<string, string>();
 int opcao;
-bool sorteado = true;
 string novoNome;
 
 do { 
@@ -49,9 +46,8 @@ do {
             {
                 Console.WriteLine("É necessário pelo menos 2 nomes para sortear!");
             }
-            else if (!sorteado)
+            else
             {
-                sorteado = true;
                 Console.WriteLine("\n=== PARES DO SORTEIO ===");
                 foreach (var par in pares)
                 {
